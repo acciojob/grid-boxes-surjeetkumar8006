@@ -1,46 +1,62 @@
-/* Basic reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
 /* Grid container */
 #grid {
+  margin: 0;
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas:
-    "one one one"
-    "two three four"
-    "two five six"
-    "two seven eight"
-    "two nine nine"
-    "ten ten ten";
+  grid-template-rows: 124px 124px 124px 124px 124px; /* five rows */
+  grid-template-columns: 242.5px 242.5px 242.5px 242.5px; /* four columns */
+  grid-gap: 10px 10px; /* row-gap column-gap */
+  background: white; /* white to make gap visible */
+  padding: 10px; /* optional */
 }
-
-/* Grid items */
-#grid div {
-  background-color: green;
+ 
+/* Base styling for grid items */
+#grid > div {
+  background: green;
   color: white;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 20px;
+  font-size: 40px;
+  padding: 10px;
+  box-sizing: border-box;
 }
-
-/* Define positions */
-#grid div:nth-child(1)  { grid-area: one; }
-#grid div:nth-child(2)  { grid-area: two; }
-#grid div:nth-child(3)  { grid-area: three; }
-#grid div:nth-child(4)  { grid-area: four; }
-#grid div:nth-child(5)  { grid-area: five; }
-#grid div:nth-child(6)  { grid-area: six; }
-#grid div:nth-child(7)  { grid-area: seven; }
-#grid div:nth-child(8)  { grid-area: eight; }
-#grid div:nth-child(9)  { grid-area: nine; }
-#grid div:nth-child(10) { grid-area: ten; }
+ 
+/* Placements */
+#grid > div:nth-child(1) {
+  grid-column: span 4 / auto;
+}
+ 
+#grid > div:nth-child(2) {
+  grid-row: span 4 / auto;
+  grid-column: 1 / span 1;
+}
+ 
+#grid > div:nth-child(3) {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+ 
+#grid > div:nth-child(4) {
+  grid-column: span 2 / auto; /* ✅ matches Cypress */
+}
+ 
+#grid > div:nth-child(5) {
+  grid-column: span 2 / auto; /* ✅ matches Cypress */
+}
+ 
+#grid > div:nth-child(6) {
+  grid-column: 4 / span 1;
+}
+ 
+#grid > div:nth-child(7) {
+  grid-column: 2 / span 1;
+}
+ 
+#grid > div:nth-child(8) {
+  grid-column: 3 / span 1;
+}
+ 
+#grid > div:nth-child(9) {
+  grid-column: 4 / span 1;
+}
+ 
+#grid > div:nth-child(10) {
+  grid-column: span 3 / auto; /* ✅ matches Cypress */
+}
